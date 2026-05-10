@@ -1,0 +1,140 @@
+---
+const jobs = [
+  {
+    company: "Nagorik Technologies Ltd.",
+    role: "Senior Software Engineer",
+    period: "July 2023 – Present",
+    points: [
+      "Led white-label VPN product line for international clients",
+      "Architected Remit & Go — non-custodial Polygon wallet with encrypted keys and fiat ramps",
+      "Engineered obfuscated IPsec/V2Ray/WireGuard clients to bypass DPI in restrictive regions",
+      "Added DNS-over-HTTPS for secure resolution and API encryption",
+      "Built native VPN channels (OpenVPN/WireGuard/V2Ray) in Kotlin, Java, Swift",
+      "Shipped split tunneling, Always-On, and Kill Switch via an abstracted protocol layer",
+      "Optimized Google Ads + AppLovin across multiple mediation networks",
+      "Ported iOS to macOS (Swift + Flutter); shipped to macOS App Store",
+      "Shipped Android TV / FireOS builds; cut crash rates ~15%",
+      "Introduced Microsoft Clarity and CleverTap analytics; Crashlytics every release",
+      "Designed real-time voice messaging, calling, and voice rooms (WebSockets + WebRTC) for ChitChat",
+      "Wired Firebase auth (Apple/Google/Facebook) and push notifications across apps",
+      "Authored quarterly engineering blogs and feature docs for team knowledge sharing",
+      "Built Reddit + Telegram feedback loops; drove 2–3 user-led features per quarter",
+      "Mentored juniors via weekly reviews, pair programming, MVVM/testing/perf training",
+      "Migrated deprecated Flutter packages; built native AARs for 16KB + targetSDK compliance",
+    ],
+  },
+  {
+    company: "Nagorik Technologies Ltd.",
+    role: "Software Engineer",
+    period: "Nov 2021 – June 2023",
+    points: [
+      "Refactored Romoni e-commerce — added shopping flow, Bkash/SSL Commerz, referrals, coupons",
+      "Integrated speech accuracy scoring and caption summarization into Tota; built model test system",
+      "Wired RevenueCat and Stripe for in-app purchases",
+      "Integrated native Play Billing and StoreKit for cross-platform payments",
+      "Built real-time matchmaking on Firebase Firestore",
+      "Designed real-time chat / voice / video features (WebRTC, WebSockets, FCM)",
+      "Owned release process across Google Play and App Store",
+    ],
+  },
+  {
+    company: "PRAN-RFL Group",
+    role: "Junior Software Engineer (CS MIS-SW)",
+    period: "Dec 2020 – Nov 2021",
+    points: [
+      "Built PRG Snacks Cart (Native Android, Java) — employee ID barcode auth for factory food sales",
+      "Engineered Vision Warranty Plus — secure activation flows and automated claim processing",
+      "Built PRG Oil Dispatch — automated vehicle slip generation with DotNet APIs and OracleDB",
+    ],
+  },
+];
+
+const VISIBLE_BULLETS = 4;
+---
+
+<section id="experience" class="px-6 py-24">
+  <div class="mx-auto max-w-4xl">
+    <h2 class="text-2xl font-bold tracking-tight">Experience</h2>
+    <div class="mt-12 space-y-12">
+      {
+        jobs.map((job, jobIdx) => {
+          const needsCollapse = job.points.length > VISIBLE_BULLETS;
+          const visiblePoints = needsCollapse
+            ? job.points.slice(0, VISIBLE_BULLETS)
+            : job.points;
+          const hiddenPoints = needsCollapse
+            ? job.points.slice(VISIBLE_BULLETS)
+            : [];
+          return (
+            <div class="relative border-l-2 border-gray-200 pl-8 dark:border-gray-700">
+              <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full border-2 border-gray-400 bg-white dark:border-gray-500 dark:bg-gray-950" />
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-gray-100">
+                    {job.role}
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {job.company}
+                  </p>
+                </div>
+                <p class="mt-1 font-mono text-xs text-gray-500 sm:mt-0 dark:text-gray-500">
+                  {job.period}
+                </p>
+              </div>
+              <ul class="mt-4 space-y-2">
+                {visiblePoints.map((point) => (
+                  <li class="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                    <span class="mr-2 text-gray-400 dark:text-gray-600">—</span>
+                    {point}
+                  </li>
+                ))}
+                {needsCollapse && (
+                  <>
+                    <ul
+                      id={`job-${jobIdx}-extra`}
+                      class="hidden space-y-2"
+                    >
+                      {hiddenPoints.map((point) => (
+                        <li class="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                          <span class="mr-2 text-gray-400 dark:text-gray-600">
+                            —
+                          </span>
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                    <li class="list-none pt-2">
+                      <button
+                        data-target={`job-${jobIdx}-extra`}
+                        class="job-toggle text-sm font-medium text-blue-600 transition-colors hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                        data-show-text={`Show ${hiddenPoints.length} more`}
+                        data-hide-text="Show less"
+                      >
+                        Show {hiddenPoints.length} more
+                      </button>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".job-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.target;
+      if (!targetId) return;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const isHidden = target.classList.toggle("hidden");
+      btn.textContent = isHidden
+        ? btn.dataset.showText || "Show more"
+        : btn.dataset.hideText || "Show less";
+    });
+  });
+</script>

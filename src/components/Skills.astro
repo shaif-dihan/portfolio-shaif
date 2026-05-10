@@ -1,0 +1,140 @@
+---
+const categories = [
+  {
+    title: "Languages",
+    skills: ["Dart", "Kotlin", "Java", "Swift", "C#", "PHP"],
+  },
+  {
+    title: "Frameworks & Platforms",
+    skills: ["Flutter", "Native Android", "Native iOS"],
+  },
+  {
+    title: "Architecture & Patterns",
+    skills: ["Clean Architecture", "MVVM", "MVC", "Design Patterns"],
+  },
+  {
+    title: "State Management",
+    skills: ["GetX", "Provider", "Riverpod", "BLoC", "Stateful"],
+  },
+  {
+    title: "Testing",
+    skills: ["Unit Testing", "Widget Testing", "Dependency Injection"],
+  },
+  {
+    title: "Security",
+    skills: [
+      "ProGuard",
+      "Code Obfuscation",
+      "SSL Pinning",
+      "Certificate Pinning",
+      "Encryption",
+      "DNS-over-HTTPS",
+      "IPsec",
+      "V2Ray",
+      "WireGuard",
+      "OpenVPN",
+    ],
+  },
+  {
+    title: "Networking & Real-time",
+    skills: ["WebSockets", "WebRTC", "REST APIs", "Retrofit", "Reactive Programming"],
+  },
+  {
+    title: "Payments & Monetization",
+    skills: [
+      "Bkash",
+      "SSL Commerz",
+      "Stripe",
+      "RevenueCat",
+      "Play Billing",
+      "StoreKit",
+      "Google Ads SDK",
+      "AppLovin SDK",
+    ],
+  },
+  {
+    title: "Backend / Cloud",
+    skills: [
+      "Firebase Auth",
+      "Realtime DB",
+      "Firestore",
+      "Crashlytics",
+      "FCM",
+      "Firebase Analytics",
+    ],
+  },
+  {
+    title: "Databases",
+    skills: [
+      "Firestore",
+      "Realtime DB",
+      "Hive",
+      "SecureStorage",
+      "SQLite",
+      "OracleDB",
+      "MySQL",
+    ],
+  },
+  {
+    title: "Analytics & Monitoring",
+    skills: [
+      "Microsoft Clarity",
+      "CleverTap",
+      "Google Analytics",
+      "Crashlytics",
+      "Android Profiler",
+      "Flutter DevTools",
+    ],
+  },
+  {
+    title: "Deployment Platforms",
+    skills: [
+      "Google Play",
+      "App Store",
+      "macOS App Store",
+      "Android TV",
+      "Amazon FireOS",
+    ],
+  },
+  {
+    title: "Web3 / Blockchain",
+    skills: ["Polygon (Matic)", "Non-custodial Wallets", "USDT/POL"],
+  },
+  {
+    title: "DevOps & Tools",
+    skills: ["Git", "GitHub", "GitLab", "CI/CD"],
+  },
+  {
+    title: "Collaboration",
+    skills: ["Slack", "ClickUp", "Trello", "Notion"],
+  },
+  {
+    title: "AI Dev Tools",
+    skills: ["Cursor AI", "Grok", "ChatGPT"],
+  },
+];
+---
+
+<section id="skills" class="px-6 py-24">
+  <div class="mx-auto max-w-4xl">
+    <h2 class="text-2xl font-bold tracking-tight">Skills</h2>
+    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        categories.map((cat) => (
+          <div>
+            <h3 class="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-500">
+              {cat.title}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {cat.skills.map((skill) => (
+                <span class="rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-300">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
