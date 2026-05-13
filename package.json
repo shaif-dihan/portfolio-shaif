@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy": "npm run build && rsync -avz --delete -e 'ssh -i /Users/user/Downloads/Oracle/ssh-key-2026-03-30.key' dist/ ubuntu@140.245.35.140:/var/www/shaif.dev/"
   },
   "dependencies": {
     "astro": "^5.0.0",
