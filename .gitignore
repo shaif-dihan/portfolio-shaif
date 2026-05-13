@@ -107,6 +107,7 @@ desktop.ini
 # Local development
 # ============================================
 development/
+docs/DEPLOYMENT.md
 
 # ============================================
 # Misc
